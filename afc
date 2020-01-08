@@ -1,0 +1,107 @@
+field
+ <?php the_field('text_hero_header'); ?>
+
+inline-img
+style="background-color:#fed247; background-image:url('<?php echo the_field('hero_bg'); ?>')"
+
+get-header, and footer to page
+<?php get_header(); ?>
+<?php get_footer(); ?>
+
+img url
+<?php if( get_field('bottom_logo') ): ?>
+                        <img src="<?php the_field('bottom_logo'); ?>" />
+                    <?php endif; ?>
+                    
+repeater
+<?php if ($rows = get_field('projects')) {
+                    foreach ($rows as $row) { ?>
+                <a href="#" class="flex-item cover" style="background-image:url('<?php echo $row['projects_img'] ?>')">
+                               <div style="<?php echo image_src($row['projects_img'], 'free', true, false); ?>"></div>
+                    <div class="text-iproject">
+                                <?php echo $row['project_text']; ?>
+                    </div>
+                </a>
+                        <?php
+                    }
+                } ?>
+ 
+ 
+ agin repeater
+    <?php if ($rows = get_field('insign-repiter')) {
+                    foreach ($rows as $row) { ?>
+                        <div class="flex-item">
+                            <figure>
+                                <?php if( $row['insign-repiter-img'] ): ?>
+                                    <img src="<?php echo $row['insign-repiter-img']; ?>" />
+                                <?php endif; ?>
+                            </figure>
+                            <div class="flex-item-text">
+                                <?php echo $row['insign-repiter-text']; ?>
+                            </div>
+                        </div>
+                        <?php
+                    }
+                } ?>
+                
+                
+   footer
+   </div>
+<footer>
+    <nav class="top-footer">
+    <div class="container">
+        <?php wp_nav_menu(array('container' => false, 'items_wrap' => '<ul id="%1$s">%3$s</ul>', 'theme_location' => 'footer_menu')); ?>
+    </div>
+    </nav>
+
+    <div class="bottom-footer">
+        <?php the_field('adr','options'); ?>
+        <?php the_field('copy','options'); ?>
+    </div>
+</footer>
+<?php wp_footer(); ?>
+</body>
+</html>
+
+
+header
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title><?php seo_title(); ?></title>
+    <meta name="MobileOptimized" content="width"/>
+    <meta name="HandheldFriendly" content="True"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <!--    <meta name="theme-color" content="#00bcb0">-->
+    <?php wp_head(); ?>
+</head>
+<body <?php body_class(); ?> data-hash="<?php wpa_fontbase64(true); ?>" data-a="<?php echo admin_url('admin-ajax.php'); ?>">
+<div id="main">
+    <header>
+
+
+
+        <nav class="main-menu">
+            <div class="menu-burger"></div>
+            <div class="container">
+                <?php wp_nav_menu(array('container' => false, 'items_wrap' => '<ul id="%1$s">%3$s</ul>', 'theme_location' => 'main_menu')); ?>
+                <nav class="mobile-main-menu">
+                    <?php wp_nav_menu( array( 'container' => false, 'items_wrap' => '<ul id="%1$s">%3$s</ul>', 'theme_location' => 'main_menu' ) ); ?>
+                </nav>
+            </div>
+        </nav>
+            <div class="logo-block">
+                <div class="container">
+                   <?php echo get_custom_logo(); ?>
+                </div>
+            </div>
+
+<!--        <div class="container">-->
+<!--            --><?php //echo get_custom_logo(); ?>
+
+
+
+<!--        </div>-->
+    </header>
+             
