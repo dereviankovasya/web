@@ -1,0 +1,31 @@
+@import 'components/mixins';
+
+@include declare-font(GothamPro,
+GothamPro,
+400);
+@include declare-font(GothamPro,
+GothamPro-Medium,
+500);
+@include declare-font(GothamPro,
+GothamPro-Black,
+900);
+
+$table: 1024px;
+$sm: 768px;
+$xs: 480px;
+
+$w: 1140px;
+$c: #000;
+$bg: #0C59AF;
+$inputH: 40px;
+$font-base: 14px;
+$f: "GothamPro";
+
+@import 'components/flexbox';
+@import 'components/reset';
+@import 'components/classes';
+@import 'components/code';
+@import 'components/dv';
+
+
+//@import 'components/woo';
